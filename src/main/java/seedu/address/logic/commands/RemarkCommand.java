@@ -1,16 +1,16 @@
 package seedu.address.logic.commands;
 
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-import seedu.address.model.Model;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_REMARK;
-import seedu.address.commons.core.index.Index;
-import seedu.address.model.person.Remark;
-import seedu.address.model.person.Person;
 import seedu.address.commons.core.Messages;
-import java.util.List;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
-
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Model;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.Remark;
+
+import java.util.List;
+
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 public class RemarkCommand extends Command {
     public static final String MESSAGE_NOT_IMPLEMENTED_YET = "Remark command not implemented yet";
@@ -31,7 +31,7 @@ public class RemarkCommand extends Command {
     private final Remark remark;
 
     /**
-     * @param index of the person in the filtered person list to edit the remark
+     * @param index  of the person in the filtered person list to edit the remark
      * @param remark of the person to be updated to
      */
     public RemarkCommand(Index index, Remark remark) {
@@ -51,7 +51,7 @@ public class RemarkCommand extends Command {
 
         Person personToEdit = lastShownList.get(index.getZeroBased());
         Person editedPerson = new Person(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
-                        personToEdit.getAddress(), personToEdit.getTags(), remark);
+                personToEdit.getAddress(), personToEdit.getTags(), remark);
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
